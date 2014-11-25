@@ -28,9 +28,15 @@ if ($result) {
 								<a href="moviedetails.php?id=<?= $row['movie_id'] ?>"><?= $row['movie_name'] ?></a>
 							</h3>
 						</div>
-						<div class="panel-body">
+						<div class="panel-body <?php
+						if ($row['review_rating'] >= 4 ){
+							echo 'text-success';
+						} elseif ( $row['review_rating'] < 2 ) {
+							echo 'text-danger';
+						}
+						?>">
 							<h4>
-								<?= $row['review_rating'] ?>
+								Rating: <?= $row['review_rating'] ?>
 							</h4>
 							<p class="lead"><?= $row['review_content'] ?></p>
 						</div>

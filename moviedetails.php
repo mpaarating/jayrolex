@@ -1,0 +1,79 @@
+<?php
+/** Author: Jay D. DeHart
+ *  Date: 11/24/2014
+ *  Description: This PHP script retrieves all details for movies from the movies table
+ *  in the databate. It then displays all move information in a HTML table.
+ *
+ */
+
+require_once('includes/database.php');
+
+//retrieve movie id
+$id = $_GET['id'];
+
+//select statement
+$query_str = "SELECT * FROM $tblMovies WHERE movie_id = '" . $id . "'";
+$review_str = "SELECT review_rating, review_content FROM $tblReviews WHERE reviews.review_movie_id='" . $id . "'";
+
+
+//execut the query
+$result = $conn->query($query_str);
+$review_result = $conn->query($review_str);
+
+//Handle selection errors
+if (!$result || !$review_result) {
+	$errno = $conn->errno;
+	$errmsg = $conn->error;
+	echo "Selection failed with: ($errno) $errmsg<br/>\n";
+	$conn->close();
+	exit;
+} else { //display results in a table
+	//insert a row into the table for each row of data
+	$result_row = $result->fetch_assoc();
+	$review_result_row = $review_result->fetch_assoc();
+
+$page_title = $result_row['movie_name'];
+
+require_once ('includes/header.php');
+
+    ?>
+	<div class="container wrapper">
+
+		<ul class="breadcrumb">
+			<li><a href="index.php">Home</a></li>
+			<li><a href="movies.php">Movies</a></li>
+			<li class="active"><?php echo $result_row['movie_name'] ?></li>
+		</ul>
+
+		<h1 class="text-center"><?php echo $result_row['movie_name'] ?></h1>
+		<div class="row">
+			<div class="col-xs-4">
+				<img class="img-responsive" src="<?php echo $result_row['movie_img']; ?>" alt=""/>
+			</div>
+			<div class="col-xs-8">
+				<div class="panel panel-default">
+					<div class="panel-body">
+						<h3>Year: <?php echo $result_row['movie_year'] ?></h3>
+						<h3>Movie Rating: <?php echo $result_row['movie_rating'] ?></h3>
+						<p class="lead"><?php echo $result_row['movie_bio'] ?></p>
+						<h3 class="<?php
+						if ($review_result_row['review_rating'] > 4 ){
+							echo 'text-success';
+						} elseif ( $review_result_row['review_rating'] < 2 ) {
+							echo 'text-danger';
+						}
+						?>">Review Rating: <?php echo $review_result_row['review_rating'] ?></h3>
+						<p class="lead">Review: <br/><?php echo $review_result_row['review_content'] ?></p>
+					</div>
+				</div>
+
+			</div>
+		</div>
+	<?php } ?>
+	</div>
+
+<?php
+
+// close the connection.
+$conn->close();
+include_once('includes/footer.php');

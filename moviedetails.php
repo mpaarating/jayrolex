@@ -12,16 +12,14 @@ require_once('includes/database.php');
 $id = $_GET['id'];
 
 //select statement
-$query_str = "SELECT * FROM $tblMovies WHERE movie_id = '" . $id . "'";
-$review_str = "SELECT review_rating, review_content FROM $tblReviews WHERE reviews.review_movie_id='" . $id . "'";
+$query_str = "SELECT m.*, r.review_rating, r.review_content FROM $tblMovies m JOIN $tblReviews r ON r.review_movie_id=$id";
 
 
 //execut the query
 $result = $conn->query($query_str);
-$review_result = $conn->query($review_str);
 
 //Handle selection errors
-if (!$result || !$review_result) {
+if (!$result) {
 	$errno = $conn->errno;
 	$errmsg = $conn->error;
 	echo "Selection failed with: ($errno) $errmsg<br/>\n";
@@ -30,7 +28,6 @@ if (!$result || !$review_result) {
 } else { //display results in a table
 	//insert a row into the table for each row of data
 	$result_row = $result->fetch_assoc();
-	$review_result_row = $review_result->fetch_assoc();
 
 $page_title = $result_row['movie_name'];
 
@@ -57,13 +54,13 @@ require_once ('includes/header.php');
 						<h3>Movie Rating: <?php echo $result_row['movie_rating'] ?></h3>
 						<p class="lead"><?php echo $result_row['movie_bio'] ?></p>
 						<h3 class="<?php
-						if ($review_result_row['review_rating'] > 4 ){
+						if ($result_row['review_rating'] > 4 ){
 							echo 'text-success';
-						} elseif ( $review_result_row['review_rating'] < 2 ) {
+						} elseif ( $result_row['review_rating'] < 2 ) {
 							echo 'text-danger';
 						}
-						?>">Review Rating: <?php echo $review_result_row['review_rating'] ?></h3>
-						<p class="lead">Review: <br/><?php echo $review_result_row['review_content'] ?></p>
+						?>">Review Rating: <?php echo $result_row['review_rating'] ?></h3>
+						<p class="lead">Review: <br/><?php echo $result_row['review_content'] ?></p>
 					</div>
 				</div>
 

@@ -5,7 +5,7 @@
 @import "bootswatch.less";
 
 .wrapper {
-  margin-top: 60px;
+  margin-top: 70px;
 }
 
 .search-form {
@@ -24,4 +24,36 @@
       font-size: @font-size-h3;
     }
   }
+}
+
+/* CUSTOMIZE THE CAROUSEL
+-------------------------------------------------- */
+
+/* Carousel base class */
+.carousel {
+  height: 500px;
+  margin-bottom: 60px;
+}
+/* Since positioning the image, we need to help out the caption */
+.carousel-caption {
+  z-index: 10;
+}
+
+/* Declare heights because of positioning of img element */
+.carousel .item {
+  height: 500px;
+  background-color: #777;
+
+  .jumbotron {
+    height: 100%;
+    padding: 0;
+    background: #000;
+  }
+}
+.carousel-inner > .item > img {
+  position: absolute;
+  opacity: .7;
+  top: 0;
+  left: 0;
+  min-width: 100%;
 }

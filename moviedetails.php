@@ -32,7 +32,7 @@ if (!$result || !$review_result) {
 	$result_row = $result->fetch_assoc();
 	$review_result_row = $review_result->fetch_assoc();
 
-	$page_title = $result_row['movie_name'];
+	$page_title = "Jayrolex: " . $result_row['movie_name'];
 
 	require_once ('includes/header.php');
 
@@ -66,7 +66,7 @@ if (!$result || !$review_result) {
 					<p class="lead">Review: <br/><?php echo $review_result_row['review_content'] ?></p>
 				</div>
 			</div>
-
+			<p><a class="btn btn-default" href="addtoaccount.php?id=<?php echo $result_row['movie_id'] ?>" role="button">FAVORITE &raquo;</a></p>
 		</div>
 	</div>
 <?php } ?>

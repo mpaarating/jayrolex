@@ -1,3 +1,20 @@
+<?php
+//start session
+@session_start();
+
+//number of items in the shopping cart
+$count=0;
+
+//retrieve the cart content
+if ( isset ( $_SESSION['cart'] ) ){
+	$cart = $_SESSION['cart'];
+
+	if  ( $cart ) {
+		$items = explode(',', $cart);
+		$count = count($items);
+	}
+}
+?>
 <!DOCTYPE html>
 <html>
 <head>

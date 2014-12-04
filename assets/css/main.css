@@ -8195,7 +8195,7 @@ a.list-group-item-danger.active:focus {
   color: #2c3e50;
 }
 .wrapper {
-  margin-top: 60px;
+  margin-top: 70px;
 }
 .search-form {
   margin-bottom: 20px;
@@ -8208,4 +8208,32 @@ a.list-group-item-danger.active:focus {
 }
 .movie-list h3 a {
   font-size: 26px;
+}
+/* CUSTOMIZE THE CAROUSEL
+-------------------------------------------------- */
+/* Carousel base class */
+.carousel {
+  height: 500px;
+  margin-bottom: 60px;
+}
+/* Since positioning the image, we need to help out the caption */
+.carousel-caption {
+  z-index: 10;
+}
+/* Declare heights because of positioning of img element */
+.carousel .item {
+  height: 500px;
+  background-color: #777;
+}
+.carousel .item .jumbotron {
+  height: 100%;
+  padding: 0;
+  background: #000;
+}
+.carousel-inner > .item > img {
+  position: absolute;
+  opacity: .7;
+  top: 0;
+  left: 0;
+  min-width: 100%;
 }

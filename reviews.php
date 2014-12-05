@@ -5,9 +5,12 @@ $page_title = "Jayrolex: Reviews";
 require_once ('includes/header.php');
 require_once ('includes/database.php');
 
-$query_str = "SELECT r.*, m.movie_name, m.movie_id FROM reviews r JOIN movies m ON m.movie_id=r.review_movie_id";
+//$query_str = "SELECT m.movie_name, m.movie_id FROM movies m JOIN  reviews r ON m.movie_id=r.review_movie_id";
+$query_str = "SELECT * FROM $tblMovies";
+
 
 $result = $conn->query($query_str);
+
 
 if ($result) {
 	?>
@@ -19,26 +22,32 @@ if ($result) {
 
 		<h1 class="text-center">Reviews</h1>
 
-		<?php while ($row = $result->fetch_assoc()): ?>
+		<?php while ($movie_row = $result->fetch_assoc()): ?>
+
 			<div class="row movie-list">
 				<div class="col-xs-12">
 					<div class="panel panel-default">
 						<div class="panel-heading">
 							<h3 class="panel-title">
-								<a href="moviedetails.php?id=<?= $row['movie_id'] ?>"><?= $row['movie_name'] ?></a>
+								<a href="moviedetails.php?id=<?= $movie_row['movie_id'] ?>"><?= $movie_row['movie_name'] ?></a>
 							</h3>
 						</div>
-						<div class="panel-body <?php
-						if ($row['review_rating'] >= 4 ){
-							echo 'text-success';
-						} elseif ( $row['review_rating'] < 2 ) {
-							echo 'text-danger';
-						}
-						?>">
-							<h4>
-								Rating: <?= $row['review_rating'] ?>
-							</h4>
-							<p class="lead"><?= $row['review_content'] ?></p>
+						<div class="panel-body">
+							<?php
+							$review_str = "SELECT review_rating, review_content FROM reviews WHERE reviews.review_movie_id=" . $movie_row['movie_id'] . "";
+							$review_result = $conn->query($review_str);
+							while ($review_row = $review_result->fetch_assoc()) : ?>
+
+							<h4>Rating: <span class="<?php
+								if ($review_row['review_rating'] >= 4 ){
+									echo 'text-success';
+								} elseif ( $review_row['review_rating'] < 2 ) {
+									echo 'text-danger';
+								}
+								?>"> <?=$review_row['review_rating'] ?></span></h4>
+							<p class="lead"><?= $review_row['review_content'] ?></p>
+
+						<?php endwhile; ?>
 						</div>
 					</div>
 				</div>

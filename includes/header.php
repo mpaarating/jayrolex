@@ -14,6 +14,24 @@ if ( isset ( $_SESSION['cart'] ) ){
 		$count = count($items);
 	}
 }
+
+//check to see if a user if logged in
+$login = '';
+$name = '';
+$role = 0;
+
+if (isset($_SESSION['login'])){
+	$login = $_SESSION['login'];
+}
+
+if (isset($_SESSION['name'])) {
+	$name = $_SESSION['name'];
+}
+
+if (isset($_SESSION['role'])){
+	$role = $_SESSION['role'];
+}
+
 ?>
 <!DOCTYPE html>
 <html>
@@ -46,15 +64,34 @@ if ( isset ( $_SESSION['cart'] ) ){
 			<a class="navbar-brand" href="index.php">JAYROLEX</a>
 		</div>
 		<div id="navbar" class="navbar-collapse collapse">
-			<form class="navbar-form navbar-right" role="form">
+			<?php
+				if ($role == 1) : ?>
+				<ul class="nav navbar-nav navbar-right">
+					<li><a href="addtoaccount.php">Welcome, <?php print_r($name); ?>!</a></li>
+					<li><a href="addMovie.php">Add Movie</a></li>
+					<li><a href="logout.php">Logout</a></li>
+				</ul>
+			<?php
+				endif;
+				if ($role == 2) : ?>
+				<ul class="nav navbar-nav navbar-right">
+					<li><a href="addtoaccount.php">Welcome, <?php print_r($name); ?>!</a></li>
+					<li><a href="logout.php">Logout</a></li>
+				</ul>
+			<?php
+				endif;
+				if (empty($login)) : ?>
+
+			<form class="navbar-form navbar-right" role="form" action="login.php" method="post">
 				<div class="form-group">
-					<input type="text" placeholder="Email" class="form-control">
+					<input type="text" class="form-control" name="username" placeholder="Username">
 				</div>
 				<div class="form-group">
-					<input type="password" placeholder="Password" class="form-control">
+					<input type="password" class="form-control" name="password" placeholder="Password">
 				</div>
 				<button type="submit" class="btn btn-success">SIGN IN</button>
 			</form>
+			<?php endif; ?>
 		</div><!--/.navbar-collapse -->
 	</div>
 </nav>

@@ -13,7 +13,7 @@ $id = $_GET['id'];
 
 //select statement
 $query_str = "SELECT * FROM $tblMovies WHERE movie_id = '" . $id . "'";
-$review_str = "SELECT review_rating, review_content FROM $tblReviews WHERE reviews.review_movie_id='" . $id . "'";
+$review_str = "SELECT review_rating, review_content FROM $tblReviews WHERE reviews.review_movie_id=" . $id . "";
 
 
 //execut the query
@@ -30,7 +30,7 @@ if (!$result || !$review_result) {
 } else { //display results in a table
 	//insert a row into the table for each row of data
 	$result_row = $result->fetch_assoc();
-	$review_result_row = $review_result->fetch_assoc();
+//	$review_result_row = $review_result->fetch_assoc();
 
 	$page_title = "Jayrolex: " . $result_row['movie_name'];
 
@@ -47,7 +47,7 @@ if (!$result || !$review_result) {
 
 	<h1 class="text-center"><?php echo $result_row['movie_name'] ?></h1>
 	<div class="row">
-		<div class="col-xs-4">
+		<div class="col-xs-3 col-xs-offset-1">
 			<img class="img-responsive" src="<?php echo $result_row['movie_img']; ?>" alt=""/>
 		</div>
 		<div class="col-xs-8">
@@ -56,6 +56,7 @@ if (!$result || !$review_result) {
 					<h3>Year: <?php echo $result_row['movie_year'] ?></h3>
 					<h3>Movie Rating: <?php echo $result_row['movie_rating'] ?></h3>
 					<p class="lead"><?php echo $result_row['movie_bio'] ?></p>
+					<?php while ($review_result_row = $review_result->fetch_assoc() ) : ?>
 					<h3 class="<?php
 					if ($review_result_row['review_rating'] > 4 ){
 						echo 'text-success';
@@ -64,6 +65,7 @@ if (!$result || !$review_result) {
 					}
 					?>">Review Rating: <?php echo $review_result_row['review_rating'] ?></h3>
 					<p class="lead">Review: <br/><?php echo $review_result_row['review_content'] ?></p>
+					<?php endwhile; ?>
 				</div>
 			</div>
 			<p><a class="btn btn-default" href="addtoaccount.php?id=<?php echo $result_row['movie_id'] ?>" role="button">FAVORITE &raquo;</a></p>

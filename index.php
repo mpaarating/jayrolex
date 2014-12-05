@@ -16,7 +16,7 @@
 				<div class="jumbotron">
 					<div class="container">
 						<div class="carousel-caption">
-							<h1>JAYROLEX Movie Service</h1>
+							<h1>JAYROLEX REVIEWS</h1>
 							<p>Welcome to the JAYROLEX Movie Review Service!</p>
 						</div>
 					</div>
@@ -29,7 +29,7 @@
 						<div class="carousel-caption">
 							<h1>Rate Movies</h1>
 							<p>Create an account to review your favorite movies</p>
-							<p><a class="btn btn-lg btn-info" href="register.php" role="button">Sign up today</a></p>
+							<p><a class="btn btn-lg btn-info" href="registration.php" role="button">Sign up today</a></p>
 						</div>
 					</div>
 				</div>
@@ -55,7 +55,7 @@
 			<div class="col-md-4">
 				<h2>CREATE ACCOUNT</h2>
 				<p>Sign up for an account in order to add a review to your favorite movie</p>
-				<p><a class="btn btn-default" href="register.php" role="button">SIGN UP &raquo;</a></p>
+				<p><a class="btn btn-default" href="registration.php" role="button">SIGN UP &raquo;</a></p>
 			</div>
 			<div class="col-md-4">
 				<h2>LIST MOVIES</h2>

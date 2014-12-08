@@ -1,10 +1,4 @@
 <?php
-/** Author: Jay D. DeHart
- *  Date: 11/24/2014
- *  Description: This PHP script retrieves all details for movies from the movies table
- *  in the databate. It then displays all move information in a HTML table.
- *
- */
 
 require_once('includes/database.php');
 

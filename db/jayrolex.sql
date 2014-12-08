@@ -7,7 +7,7 @@
 #
 # Host: 127.0.0.1 (MySQL 5.5.38-0ubuntu0.14.04.1)
 # Database: jayrolex
-# Generation Time: 2014-11-25 14:34:43 +0000
+# Generation Time: 2014-12-05 01:29:41 +0000
 # ************************************************************
 
 
@@ -74,10 +74,12 @@ LOCK TABLES `reviews` WRITE;
 INSERT INTO `reviews` (`review_id`, `review_movie_id`, `review_user_id`, `review_rating`, `review_content`)
 VALUES
 	(1,1,2,5,'Lord of the Rings is awesome!! However, The Fellowship of the Ring is a little slow, but keeps you roped in for the long haul.'),
-	(2,5,4,4,'District 9 kept the adrenaline going and tension high. A must see for any action/sci-fi fan.'),
+	(2,2,3,5,'Cool stuff man! Pretty good!'),
 	(3,2,1,5,'What\'s not to like about giant robots fighting giant monsters!?'),
 	(4,3,2,3,'The movie rating of this movie doesn\'t do it justice. While being a typical 90\'s teen flick, Dazed and Confused is absolutely comical and you\'ll fall in love with the characters over and over again.'),
-	(5,4,3,1,'I honestly think the review rating is a little generous. Batman & Robin is by far the worst Batman movie ever thrown up onto the silver screen.');
+	(5,4,3,1,'I honestly think the review rating is a little generous. Batman & Robin is by far the worst Batman movie ever thrown up onto the silver screen.'),
+	(6,1,1,3,'This was a pretty ok movie. The dude that croaked was weird.'),
+	(7,5,4,4,'District 9 kept the adrenaline going and tension high. A must see for any action/sci-fi fan.');
 
 /*!40000 ALTER TABLE `reviews` ENABLE KEYS */;
 UNLOCK TABLES;
@@ -105,8 +107,9 @@ INSERT INTO `users` (`user_id`, `user_name`, `user_full_name`, `user_email`, `us
 VALUES
 	(1,'Smores','Joe Smoe','smores@gmail.edu','c@mpf1re',1),
 	(2,'White Rabbit','Beth White','bethanyWhite123@yahoo.com','WhIteXmas',2),
-	(3,'Jimmy','James Williams','willJ60@yahoo.com','w!LLy',3),
-	(4,'Bobbie','Billy Bob','bobbyB@zoho.com','z0h0Rockz',4);
+	(3,'Jimmy','James Williams','willJ60@yahoo.com','w!LLy',1),
+	(4,'Bobbie','Billy Bob','bobbyB@zoho.com','z0h0Rockz',2),
+	(5,'user','User 1','user@user.com','user',1);
 
 /*!40000 ALTER TABLE `users` ENABLE KEYS */;
 UNLOCK TABLES;

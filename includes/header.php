@@ -68,7 +68,7 @@ if (isset($_SESSION['role'])){
 				if ($role == 1) : ?>
 				<ul class="nav navbar-nav navbar-right">
 					<li><a href="addtoaccount.php">Welcome, <?php print_r($name); ?>!</a></li>
-					<li><a href="addMovie.php">Add Movie</a></li>
+					<li><a href="addmovie.php">Add Movie</a></li>
 					<li><a href="logout.php">Logout</a></li>
 				</ul>
 			<?php

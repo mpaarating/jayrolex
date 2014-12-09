@@ -10,7 +10,7 @@ $query_str = "SELECT * FROM $tblMovies WHERE movie_id = '" . $id . "'";
 $review_str = "SELECT review_rating, review_content FROM $tblReviews WHERE reviews.review_movie_id=" . $id . "";
 
 
-//execut the query
+//execute the query
 $result = $conn->query($query_str);
 $review_result = $conn->query($review_str);
 
@@ -42,7 +42,17 @@ if (!$result || !$review_result) {
 	<h1 class="text-center"><?php echo $result_row['movie_name'] ?></h1>
 	<div class="row">
 		<div class="col-xs-3 col-xs-offset-1">
-			<img class="img-responsive" src="<?php echo $result_row['movie_img']; ?>" alt=""/>
+			<img class="img-responsive" src="<?php
+				$image = $result_row['movie_img'];
+				$web = ".com";
+
+				if(stristr($image, $web)){
+					echo file_get_contents($image);
+				} else {
+					echo $result_row['movie_img'];
+				}
+
+			?>" alt=""/>
 		</div>
 		<div class="col-xs-8">
 			<div class="panel panel-default">

@@ -12,7 +12,7 @@ include ('includes/header.php');
     <h1 class="text-center">REGISTER</h1>
     <p class="lead text-center">Please register your account</p>
 	<div class="col-xs-8 col-xs-offset-2">
-		<form class="form-horizontal" role="form" action="register.php" method="post" enctype="text/plain">
+		<form class="form-horizontal" role="form" action="register.php" method="get" enctype="text/plain">
 			<div class="form-group">
 				<label for="newUserName" class="col-sm-2 control-label">Username</label>
 				<div class="col-sm-10">
@@ -54,3 +54,8 @@ include ('includes/header.php');
 		</form>
 	</div>
 </div>
+
+
+<?php
+include('includes/footer.php');
+?>

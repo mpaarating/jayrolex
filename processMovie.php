@@ -29,12 +29,4 @@ if(!$result) {
 }
 
 
-
-//session variables
-$_SESSION['login'] = $user_name;
-$_SESSION['name'] = $full_name;
-$_SESSION['role'] = $role;
-
-$login_status = 3;
-
-header("Location: loginform.php?ls=$login_status");
+header("Location: movies.php");

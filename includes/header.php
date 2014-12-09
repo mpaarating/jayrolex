@@ -61,7 +61,7 @@ if (isset($_SESSION['role'])){
 				<span class="icon-bar"></span>
 				<span class="icon-bar"></span>
 			</button>
-			<a class="navbar-brand" href="index.php">JAYROLEX</a>
+			<a class="navbar-brand" href="index.php"><i class="fa fa-clock-o fa-lg"></i> JAYROLEX</a>
 		</div>
 		<div id="navbar" class="navbar-collapse collapse">
 			<?php

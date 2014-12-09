@@ -2,19 +2,19 @@
 //start a new session
 session_start();
 
-$page_title = "Register New Account";
+$page_title = "Add Movie";
 
 require_once 'includes/header.php';
 require_once 'includes/database.php';
 
-$user_name = $_GET['username'];
-$full_name = $_GET['name'];
-$user_email = $_GET['email'];
-$password = $_GET['password'];
-$role = $_GET['role'];
+$title = $_GET['movie_name'];
+$year = $_GET['movie_year'];
+$bio = $_GET['bio'];
+$rating = $_GET['rating'];
+$image =  $_GET['image'];
 
 //define sql statement
-$query_str = "INSERT INTO users VALUES (NULL, '$user_name', '$full_name', '$user_email', '$password', '$role')";
+$query_str = "INSERT INTO movies VALUES (NULL, '$title', '$year', '$rating', '$bio', '$image')";
 
 //execute the query
 $result = @$conn->query($query_str);

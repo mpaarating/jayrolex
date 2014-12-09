@@ -57,7 +57,7 @@
 						<div class="caption">
 							<div class="text-center">
 								<a href="moviedetails.php?id=<?php echo $result_row['movie_id']?>">
-									<img src="<?php echo $result_row['movie_img'] ?>" />
+									<img class="img-responsive" src="<?php echo $result_row['movie_img'] ?>" />
 								</a>
 							</div>
 								<h3 class="text-center">

@@ -8,7 +8,7 @@ require_once('includes/database.php');
 $name = $_GET['movie'];
 
 //select statement
-$query_str = "SELECT * FROM $tblMovies WHERE movie_name LIKE '%" .$name. "%'";
+$query_str = "SELECT * FROM $tblMovies WHERE movie_name LIKE '%" .$name. "%' OR movie_bio LIKE '%" .$name. "%'";
 
 //execut the query
 $result = $conn->query($query_str);

@@ -8209,6 +8209,10 @@ a.list-group-item-danger.active:focus {
 .movie-list h3 a {
   font-size: 26px;
 }
+.thumbnail img.movie-image {
+  height: 250px;
+  width: 190px;
+}
 /* CUSTOMIZE THE CAROUSEL
 -------------------------------------------------- */
 /* Carousel base class */

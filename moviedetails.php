@@ -42,17 +42,7 @@ if (!$result || !$review_result) {
 	<h1 class="text-center"><?php echo $result_row['movie_name'] ?></h1>
 	<div class="row">
 		<div class="col-xs-3 col-xs-offset-1">
-			<img class="img-responsive" src="<?php
-				$image = $result_row['movie_img'];
-				$web = ".com";
-
-				if(stristr($image, $web)){
-					echo file_get_contents($image);
-				} else {
-					echo $result_row['movie_img'];
-				}
-
-			?>" alt=""/>
+			<img class="img-responsive" src="<?php echo $result_row['movie_img']; ?>" alt=""/>
 		</div>
 		<div class="col-xs-8">
 			<div class="panel panel-default">
@@ -60,7 +50,8 @@ if (!$result || !$review_result) {
 					<h3>Year: <?php echo $result_row['movie_year'] ?></h3>
 					<h3>Movie Rating: <?php echo $result_row['movie_rating'] ?></h3>
 					<p class="lead"><?php echo $result_row['movie_bio'] ?></p>
-					<?php while ($review_result_row = $review_result->fetch_assoc() ) : ?>
+					<?php for ($i = 0; $i < 5; $i++ ) :
+						while ( $review_result_row = $review_result->fetch_assoc() ) : ?>
 					<h3 class="<?php
 					if ($review_result_row['review_rating'] > 4 ){
 						echo 'text-success';
@@ -69,10 +60,17 @@ if (!$result || !$review_result) {
 					}
 					?>">Review Rating: <?php echo $review_result_row['review_rating'] ?></h3>
 					<p class="lead">Review: <br/><?php echo $review_result_row['review_content'] ?></p>
-					<?php endwhile; ?>
+					<?php endwhile; endfor;  ?>
 				</div>
 			</div>
-			<p><a class="btn btn-default" href="addtoaccount.php?id=<?php echo $result_row['movie_id'] ?>" role="button">FAVORITE &raquo;</a></p>
+			<?php if (empty($login)) { ?>
+					<p class="lead"><a href="loginform.php">Sign in</a> to leave a review or make this a favorite movie!</p>
+			<?php	} else { ?>
+				<p>
+					<a class="btn btn-info" href="addreview.php?id=<?php echo $result_row['movie_id'] ?>" role="button">ADD REVIEW &raquo;</a>
+					<a class="btn btn-success" href="addtoaccount.php?id=<?php echo $result_row['movie_id'] ?>" role="button">FAVORITE &raquo;</a>
+				</p>
+			<?php } ?>
 		</div>
 	</div>
 <?php } ?>

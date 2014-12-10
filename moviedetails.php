@@ -70,6 +70,10 @@ if (!$result || !$review_result) {
 					<a class="btn btn-info" href="addreview.php?id=<?php echo $result_row['movie_id'] ?>" role="button">ADD REVIEW &raquo;</a>
 					<a class="btn btn-success" href="addtoaccount.php?id=<?php echo $result_row['movie_id'] ?>" role="button">FAVORITE &raquo;</a>
 				</p>
+					<?php if ($role == 1) : ?>
+						<a class="btn btn-danger" href="deleteMovie.php?id=<?php echo $result_row['movie_id']; ?>">DELETE MOVIE &raquo;</a>
+				<?php
+				endif;?>
 			<?php } ?>
 		</div>
 	</div>

@@ -32,6 +32,10 @@ if (isset($_SESSION['role'])){
 	$role = $_SESSION['role'];
 }
 
+if (isset($_SESSION['id'])) {
+	$session_id = $_SESSION['id'];
+}
+
 ?>
 <!DOCTYPE html>
 <html>
@@ -67,7 +71,7 @@ if (isset($_SESSION['role'])){
 			<?php
 				if ($role == 1) : ?>
 				<ul class="nav navbar-nav navbar-right">
-					<li><a href="addtoaccount.php">Welcome, <?php print_r($name); ?>!</a></li>
+					<li><a href="addtoaccount.php">Welcome, <?php echo $name; ?>!</a></li>
 					<li><a href="addmovie.php">Add Movie</a></li>
 					<li><a href="logout.php">Logout</a></li>
 				</ul>

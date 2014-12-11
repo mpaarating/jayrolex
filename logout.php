@@ -23,4 +23,6 @@ include('includes/header.php');
     <p class="lead text-center text-danger"> Thank you for your visit. You are now logged out.</p>
 </div>
 
-<?php include('includes/footer.php'); ?>
+<?php
+header( "Refresh:3; url=index.php", true, 303);
+include('includes/footer.php'); ?>

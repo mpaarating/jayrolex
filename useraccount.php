@@ -49,25 +49,25 @@ if (!$result) {
 					<div class="form-group">
 						<label for="newUserName" class="col-sm-2 control-label">Username</label>
 						<div class="col-sm-10">
-							<input type="text" class="form-control" id="newUserName" name="username" value="<?php echo $result_row['user_name']; ?>">
+							<input type="text" class="form-control" id="newUserName" name="username" value="<?php echo $result_row['user_name']; ?>" required>
 						</div>
 					</div>
 					<div class="form-group">
 						<label for="newName" class="col-sm-2 control-label">Name</label>
 						<div class="col-sm-10">
-							<input type="text" class="form-control" id="newName" name="name" value="<?php echo $result_row['user_full_name']; ?>">
+							<input type="text" class="form-control" id="newName" name="name" value="<?php echo $result_row['user_full_name']; ?>" required>
 						</div>
 					</div>
 					<div class="form-group">
 						<label for="newEmail" class="col-sm-2 control-label">Email</label>
 						<div class="col-sm-10">
-							<input type="email" class="form-control" id="newEmail" name="email" value="<?php echo $result_row['user_email']; ?>">
+							<input type="email" class="form-control" id="newEmail" name="email" value="<?php echo $result_row['user_email']; ?>" required>
 						</div>
 					</div>
 					<div class="form-group">
 						<label for="newPassword" class="col-sm-2 control-label">Password</label>
 						<div class="col-sm-10">
-							<input type="password" class="form-control" id="newPassword" name="password" value="<?php echo $result_row['user_password']; ?>">
+							<input type="password" class="form-control" id="newPassword" name="password" value="<?php echo $result_row['user_password']; ?>" required>
 						</div>
 					</div>
 					<div class="form-group">

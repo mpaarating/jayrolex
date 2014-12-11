@@ -36,6 +36,6 @@ if (!$result) {
 <?php
 // close the connection.
 $conn->close();
-
+header( "Refresh:3; url=index.php", true, 303);
 include ('includes/footer.php');
 ?>

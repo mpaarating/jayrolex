@@ -28,8 +28,10 @@ if (!empty($username)) {
         $_SESSION['id'] = $result_row['user_id'];
 
         //update the login status
-        $login_status = 3;
+        $login_status = 1;
     }
+
+
 }
-header( "Location: useraccount.php");
+header( "Location: loginform.php?ls=$login_status");
 $conn->close();

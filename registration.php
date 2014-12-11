@@ -16,25 +16,25 @@ include ('includes/header.php');
 			<div class="form-group">
 				<label for="newUserName" class="col-sm-2 control-label">Username</label>
 				<div class="col-sm-10">
-					<input type="text" class="form-control" id="newUserName" name="username" placeholder="Username">
+					<input type="text" class="form-control" id="newUserName" name="username" placeholder="Username" required>
 				</div>
 			</div>
 			<div class="form-group">
 				<label for="newName" class="col-sm-2 control-label">Name</label>
 				<div class="col-sm-10">
-					<input type="text" class="form-control" id="newName" name="name" placeholder="Name">
+					<input type="text" class="form-control" id="newName" name="name" placeholder="Name" required>
 				</div>
 			</div>
 			<div class="form-group">
 				<label for="newEmail" class="col-sm-2 control-label">Email</label>
 				<div class="col-sm-10">
-					<input type="email" class="form-control" id="newEmail" name="email" placeholder="Email">
+					<input type="email" class="form-control" id="newEmail" name="email" placeholder="Email" required>
 				</div>
 			</div>
 			<div class="form-group">
 				<label for="newPassword" class="col-sm-2 control-label">Password</label>
 				<div class="col-sm-10">
-					<input type="password" class="form-control" id="newPassword" name="password" placeholder="Password">
+					<input type="password" class="form-control" id="newPassword" name="password" placeholder="Password" required>
 				</div>
 			</div>
 			<div class="form-group">

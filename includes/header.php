@@ -88,10 +88,10 @@ if (isset($_SESSION['id'])) {
 
 			<form class="navbar-form navbar-right" role="form" action="login.php" method="post">
 				<div class="form-group">
-					<input type="text" class="form-control" name="username" placeholder="Username">
+					<input type="text" class="form-control" name="username" placeholder="Username" required>
 				</div>
 				<div class="form-group">
-					<input type="password" class="form-control" name="password" placeholder="Password">
+					<input type="password" class="form-control" name="password" placeholder="Password" required>
 				</div>
 				<button type="submit" class="btn btn-success">SIGN IN</button>
 			</form>

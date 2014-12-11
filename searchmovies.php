@@ -26,10 +26,11 @@ if (!$result) {
 		
 		<ul class="breadcrumb">
 			<li><a href="index.php">Home</a></li>
-			<li class="active">Movies</li>
+			<li><a href="movies.php">Movies</a></li>
+			<li class="active">Search Results</li>
 		</ul>
 		
-	    <h1 class="text-center">Movies</h1>
+	    <h1 class="text-center">Search Results</h1>
 	    
 	    <div class="row">
 			<div class="col-xs-4 col-xs-offset-8">
@@ -47,7 +48,7 @@ if (!$result) {
     <?php 
     	$num_rows = mysqli_num_rows($result);
     	if ($num_rows == 0) {
-    		echo "Your search of <strong>$name</strong> is incorrect. Type in a different title to search.";
+    		echo "<p class='lead text-center'>No results found for <strong>". $name . "</strong>. Please search again.</p>";
     	} else {
         //insert a row into the table for each row of data
 		$i = 0;

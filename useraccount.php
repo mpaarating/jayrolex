@@ -9,7 +9,7 @@ $user_id = $session_id;
 
 //define the select statement
 $query_str = "SELECT * FROM users WHERE user_id=" . $user_id;
-$review_str = "SELECT m.movie_name, m.movie_id FROM movies m JOIN  reviews r WHERE r.user_id=" . $user_id;
+$review_str = "select review_content, review_rating, movie_name, movie_id from reviews join movies on reviews.review_movie_id=movies.movie_id where reviews.review_user_id=" . $user_id;
 
 //execute the query
 $result = $conn->query($query_str);
@@ -19,7 +19,7 @@ $review_result = $conn->query($review_str);
 
 //retrieve the results
 $result_row = $result->fetch_assoc();
-//$review_row = $review_result->fetch_assoc();
+
 
 
 //Handle selection errors
@@ -38,7 +38,7 @@ if (!$result) {
 		</ul>
 		<div class="row">
 			<div class="col-xs-8 col-xs-offset-2">
-				<h1 class="text-center">Hi <?php echo $name; ?>!</h1>
+				<h1 class="text-center text-success">Hi <?php echo $name; ?>!</h1>
 				<p class="lead">Welcome to your user dashboard! Here you can edit your information, see favorite movies, and your own reviews!</p>
 			</div>
 		</div>
@@ -73,6 +73,7 @@ if (!$result) {
 					<div class="form-group">
 						<div class="col-sm-offset-2 col-sm-10">
 							<a href="javascript:document.edituser.submit()" class="btn btn-success">UPDATE</a>
+							<a class="btn btn-danger" href="deleteuser.php?id=<?php echo $result_row['user_id'] ?>">DELETE ACCOUNT</a>
 						</div>
 					</div>
 				</form>
@@ -82,7 +83,6 @@ if (!$result) {
 			<div class="col-xs-6">
 				<h2 class="text-center text-success">Your Favorites</h2>
 				<?php
-				var_dump($review_str);
 				if (isset($items)) {
 					$items_count_value = array_count_values($items);
 
@@ -121,12 +121,32 @@ if (!$result) {
 			<div class="col-xs-6">
 				<h2 class="text-center text-success">Your Reviews</h2>
 				<?php
-/*					if ($review_row){
-						while ($review_row) {
+				if ($review_result){
+					while ($review_row = $review_result->fetch_assoc()) { ?>
 
-						}
-					}*/
-				?>
+						<div class="panel panel-default">
+							<div class="panel-heading">
+								<h3 class="panel-title">
+									<a href="moviedetails.php?id=<?= $review_row['movie_id'] ?>"><?= $review_row['movie_name'] ?></a>
+								</h3>
+							</div>
+							<div class="panel-body">
+								<h4>Rating: <span class="<?php
+									if ($review_row['review_rating'] >= 4) {
+										echo 'text-success';
+									} elseif ($review_row['review_rating'] < 2) {
+										echo 'text-danger';
+									}
+									?>"> <?= $review_row['review_rating'] ?></span></h4>
+
+								<p class="lead"><?= $review_row['review_content'] ?></p>
+							</div>
+						</div>
+					<?php
+					}
+				} else { ?>
+					<p>You have no reviews</p>
+				<?php } ?>
 			</div>
 
 		</div>

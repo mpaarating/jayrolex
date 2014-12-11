@@ -72,7 +72,7 @@ if (!$result || !$review_result) {
 					<a class="btn btn-success" href="addtoaccount.php?id=<?php echo $result_row['movie_id'] ?>" role="button">FAVORITE <i class="fa fa-angle-double-right fa-lg"></i></a>
 				</p>
 					<?php if ($role == 1) : ?>
-						<a class="btn btn-danger" href="deleteMovie.php?id=<?php echo $result_row['movie_id']; ?>">DELETE MOVIE <i class="fa fa-close"></i></a>
+						<a class="btn btn-danger" href="deletemovie.php?id=<?php echo $result_row['movie_id']; ?>">DELETE MOVIE <i class="fa fa-close"></i></a>
 				<?php
 				endif;?>
 			<?php } ?>

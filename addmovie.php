@@ -14,7 +14,7 @@ require_once ('includes/header.php');
   <h1 class="text-center">ADD MOVIE</h1>
   <p class="lead text-center">Please add your desired movie</p>
   <div class="col-xs-8 col-xs-offset-2">
-    <form class="form-horizontal" role="form" action="processMovie.php" method="get" enctype="text/plain">
+    <form class="form-horizontal" role="form" action="processmovie.php" method="get" enctype="text/plain">
       <div class="form-group">
         <label for="newMovieName" class="col-sm-3 control-label">Title</label>
         <div class="col-sm-9">

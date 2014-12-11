@@ -30,11 +30,31 @@ if(!$result) {
 
 
 
-//session variables
-$_SESSION['login'] = $user_name;
-$_SESSION['name'] = $full_name;
-$_SESSION['role'] = $role;
+$query_stry = "SELECT * FROM users WHERE user_name='$user_name' AND user_password='$password'";
 
-$login_status = 3;
+//Execute the query
+$result = @$conn->query($query_stry);
+if($result -> num_rows) {
 
-header("Location: loginform.php?ls=$login_status");
+  //It is a valid user. Need to store the user in Session Variables
+  @session_start();
+  $_SESSION['login'] = $user_name;
+  $result_row = $result->fetch_assoc();
+  $_SESSION['role'] = $result_row['user_role'];
+  $_SESSION['name'] = $result_row['user_full_name'];
+  $_SESSION['id'] = $result_row['user_id'];
+
+  //update the login status
+  $login_status = 1;
+  ?>
+
+  <div class="container wrapper">
+    <h1 class="text-center text-success">You have successfully registered!</h1>
+  </div>
+
+<?php
+}
+
+header( "Refresh:3; url=useraccount.php", true, 303);
+include ('includes/footer.php');
+?>

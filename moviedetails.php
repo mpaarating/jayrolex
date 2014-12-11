@@ -64,7 +64,7 @@ if (!$result || !$review_result) {
 				</div>
 			</div>
 			<?php if (empty($login)) { ?>
-					<p class="lead"><a href="loginform.php">Sign in</a> to leave a review or make this a favorite movie!</p>
+					<p class="lead"><a href="loginform.php">Sign in</a> or <a href="registration.php">register</a> to leave a review or make this a favorite movie!</p>
 			<?php	} else { ?>
 				<p>
 					<a class="btn btn-info" href="addreview.php?id=<?php echo $result_row['movie_id'] ?>" role="button">ADD REVIEW <i class="fa fa-plus"></i></a></p>

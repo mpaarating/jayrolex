@@ -9,7 +9,7 @@ $user_id = $session_id;
 
 //define the select statement
 $query_str = "SELECT * FROM users WHERE user_id=" . $user_id;
-$review_str = "select review_content, review_rating, movie_name, movie_id from reviews join movies on reviews.review_movie_id=movies.movie_id where reviews.review_user_id=" . $user_id;
+$review_str = "select review_content, review_id, review_rating, movie_name, movie_id from reviews join movies on reviews.review_movie_id=movies.movie_id where reviews.review_user_id=" . $user_id;
 
 //execute the query
 $result = $conn->query($query_str);
@@ -140,6 +140,7 @@ if (!$result) {
 									?>"> <?= $review_row['review_rating'] ?></span></h4>
 
 								<p class="lead"><?= $review_row['review_content'] ?></p>
+								<a class="btn btn-danger" href="deletereview.php?id=<?= $review_row['review_id'] ?>">DELETE</a>
 							</div>
 						</div>
 					<?php

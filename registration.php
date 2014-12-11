@@ -41,7 +41,7 @@ include ('includes/header.php');
 				<label for="newRole" class="col-sm-2 control-label">Role</label>
 				<div class="col-sm-10">
 					<select id="newRole" name="role" class="form-control">
-                        <option value="2">Regular User</option>
+						<option value="2">Regular User</option>
 						<option value="1">Administrator</option>
 					</select>
 				</div>

@@ -65,7 +65,13 @@ if (isset($_SESSION['id'])) {
 				<span class="icon-bar"></span>
 				<span class="icon-bar"></span>
 			</button>
-			<a class="navbar-brand" href="index.php"><i class="fa fa-clock-o fa-lg"></i> JAYROLEX</a>
+			<a href="#" class="dropdown-toggle navbar-brand" data-toggle="dropdown" role="button" aria-expanded="false"><i class="fa fa-clock-o fa-lg"></i> JAYROLEX</a>
+			<ul class="dropdown-menu" role="menu">
+				<li><a href="index.php">HOME</a></li>
+				<li><a href="registration.php">REGISTER</a></li>
+				<li><a href="movies.php">MOVIES</a></li>
+				<li><a href="reviews.php">REVIEWS</a></li>
+			</ul>
 		</div>
 		<div id="navbar" class="navbar-collapse collapse">
 			<?php

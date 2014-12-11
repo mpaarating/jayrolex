@@ -32,7 +32,7 @@ if (!$result) {
 </div>
 
 <?php
-header( "Refresh:3; url=index.php", true, 303);
+header( "Refresh:3; url=useraccount.php", true, 303);
 // close the connection.
 $conn->close();
 

@@ -36,9 +36,7 @@ if($result -> num_rows == 0) {
   //Execute the query
   $insert_result = @$conn->query($query_stry);
 
-  //run new query for newly stored user
-  $new_str = "SELECT * FROM users WHERE user_name='$user_name' && user_password='$password'";
-  $new_result = @$conn->query($new_str);
+  $new_result = @$conn->query($query_str);
   //It is a valid user. Need to store the user in Session Variables
   $_SESSION['login'] = $user_name;
   $result_row = $new_result->fetch_assoc();

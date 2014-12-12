@@ -71,6 +71,7 @@ if (!$result) {
 									echo "<a href='moviedetails.php?id=" . $result_row['movie_id'] . "'>", $result_row['movie_name'], "</a>";
 									?>
 								</h3>
+								<p class="lead text-center"><?php echo $result_row['movie_bio'] ?></p>
 						</div>
 					</div>
 				</div>

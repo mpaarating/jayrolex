@@ -35,6 +35,7 @@ $query_stry = "SELECT * FROM users WHERE user_name='$user_name' AND user_passwor
 //Execute the query
 $result = @$conn->query($query_stry);
 if($result -> num_rows) {
+<<<<<<< HEAD
 	
   $dup_name = mysql_query("SELECT user_name FROM users WHERE user_name ='" .$user_name. "'");
   $dup_email = mysql_query("SELECT user_email FROM users WHERE user_email ='" .$user_email. "'");
@@ -55,6 +56,17 @@ if($result -> num_rows) {
   $_SESSION['name'] = $result_row['user_full_name'];
   $_SESSION['id'] = $result_row['user_id'];
 
+=======
+
+  //It is a valid user. Need to store the user in Session Variables
+  @session_start();
+  $_SESSION['login'] = $user_name;
+  $result_row = $result->fetch_assoc();
+  $_SESSION['role'] = $result_row['user_role'];
+  $_SESSION['name'] = $result_row['user_full_name'];
+  $_SESSION['id'] = $result_row['user_id'];
+
+>>>>>>> origin/master
   //update the login status
   $login_status = 1;
   ?>
@@ -64,8 +76,14 @@ if($result -> num_rows) {
   </div>
 
 <?php
+<<<<<<< HEAD
 header( "Refresh:3; url=useraccount.php", true, 303);
 	}
 }
+=======
+}
+
+header( "Refresh:3; url=useraccount.php", true, 303);
+>>>>>>> origin/master
 include ('includes/footer.php');
 ?>

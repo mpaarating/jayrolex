@@ -125,6 +125,7 @@ if (isset($_SESSION['id'])) {
 						</li>
 					</ul>
 				<?php endif; ?>
+
 			</div>
 		</div><!--/.navbar-right -->
 	</div>

@@ -30,11 +30,42 @@ if(!$result) {
 
 
 
-//session variables
-$_SESSION['login'] = $user_name;
-$_SESSION['name'] = $full_name;
-$_SESSION['role'] = $role;
+$query_stry = "SELECT * FROM users WHERE user_name='$user_name' AND user_password='$password'";
 
-$login_status = 3;
+//Execute the query
+$result = @$conn->query($query_stry);
+if($result -> num_rows) {
+	
+  $dup_name = mysql_query("SELECT user_name FROM users WHERE user_name ='" .$user_name. "'");
+  $dup_email = mysql_query("SELECT user_email FROM users WHERE user_email ='" .$user_email. "'");
+  if (mysql_num_rows($dup_name) >0) {
+  		echo "<p class='text-center text-danger'>This username already exists! Please choose another one!</p>";
+	  	header( "Refresh:3; url=registration.php", true, 303);
+  }
+  //elseif(mysql_num_rows($dup_email) >0){
+  		// echo "<p class='text-center text-danger'>This email is currently being used! Please use a different one!</p>";
+  		// header( "Refresh:3; url=registration.php", true, 303);
+  // }
+  else{
+  //It is a valid user. Need to store the user in Session Variables
+  @session_start();
+  $_SESSION['login'] = $user_name;
+  $result_row = $result->fetch_assoc();
+  $_SESSION['role'] = $result_row['user_role'];
+  $_SESSION['name'] = $result_row['user_full_name'];
+  $_SESSION['id'] = $result_row['user_id'];
 
-header("Location: loginform.php?ls=$login_status");
+  //update the login status
+  $login_status = 1;
+  ?>
+
+  <div class="container wrapper">
+    <h1 class="text-center text-success">You have successfully registered!</h1>
+  </div>
+
+<?php
+header( "Refresh:3; url=useraccount.php", true, 303);
+	}
+}
+include ('includes/footer.php');
+?>

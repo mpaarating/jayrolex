@@ -38,15 +38,6 @@ include ('includes/header.php');
 				</div>
 			</div>
 			<div class="form-group">
-				<label for="newRole" class="col-sm-2 control-label">Role</label>
-				<div class="col-sm-10">
-					<select id="newRole" name="role" class="form-control">
-						<option value="2">Regular User</option>
-						<option value="1">Administrator</option>
-					</select>
-				</div>
-			</div>
-			<div class="form-group">
 				<div class="col-sm-offset-2 col-sm-10">
 					<button type="submit" class="btn btn-success">Register</button>
 				</div>

@@ -11,7 +11,7 @@ $user_name = $_GET['username'];
 $full_name = $_GET['name'];
 $user_email = $_GET['email'];
 $password = $_GET['password'];
-$role = $_GET['role'];
+$role = 2;
 
 
 $query_str = "SELECT * FROM users WHERE user_name='$user_name' && user_password='$password'";

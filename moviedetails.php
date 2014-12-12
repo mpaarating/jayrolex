@@ -64,12 +64,17 @@ if (!$result || !$review_result) {
 				</div>
 			</div>
 			<?php if (empty($login)) { ?>
-					<p class="lead"><a href="loginform.php">Sign in</a> to leave a review or make this a favorite movie!</p>
+					<p class="lead"><a href="loginform.php">Sign in</a> or <a href="registration.php">register</a> to leave a review or make this a favorite movie!</p>
 			<?php	} else { ?>
 				<p>
-					<a class="btn btn-info" href="addreview.php?id=<?php echo $result_row['movie_id'] ?>" role="button">ADD REVIEW &raquo;</a>
-					<a class="btn btn-success" href="addtoaccount.php?id=<?php echo $result_row['movie_id'] ?>" role="button">FAVORITE &raquo;</a>
+					<a class="btn btn-info" href="addreview.php?id=<?php echo $result_row['movie_id'] ?>" role="button">ADD REVIEW <i class="fa fa-plus"></i></a></p>
+					<p>
+					<a class="btn btn-success" href="addtoaccount.php?id=<?php echo $result_row['movie_id'] ?>" role="button">FAVORITE <i class="fa fa-angle-double-right fa-lg"></i></a>
 				</p>
+					<?php if ($role == 1) : ?>
+						<a class="btn btn-danger" href="deletemovie.php?id=<?php echo $result_row['movie_id']; ?>">DELETE MOVIE <i class="fa fa-close"></i></a>
+				<?php
+				endif;?>
 			<?php } ?>
 		</div>
 	</div>

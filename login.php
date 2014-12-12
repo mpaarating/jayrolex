@@ -25,12 +25,13 @@ if (!empty($username)) {
         $result_row = $result->fetch_assoc();
         $_SESSION['role'] = $result_row['user_role'];
         $_SESSION['name'] = $result_row['user_full_name'];
+        $_SESSION['id'] = $result_row['user_id'];
 
         //update the login status
         $login_status = 1;
     }
+
+
 }
-
+header( "Location: loginform.php?ls=$login_status");
 $conn->close();
-
-header("Location: loginform.php?ls=$login_status");

@@ -7,7 +7,7 @@
 #
 # Host: 127.0.0.1 (MySQL 5.5.38-0ubuntu0.14.04.1)
 # Database: jayrolex
-# Generation Time: 2014-12-12 19:38:32 +0000
+# Generation Time: 2014-12-16 06:10:03 +0000
 # ************************************************************
 
 
@@ -68,6 +68,16 @@ CREATE TABLE `reviews` (
   CONSTRAINT `users_foreign_key` FOREIGN KEY (`review_user_id`) REFERENCES `users` (`user_id`) ON DELETE CASCADE ON UPDATE CASCADE
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
+LOCK TABLES `reviews` WRITE;
+/*!40000 ALTER TABLE `reviews` DISABLE KEYS */;
+
+INSERT INTO `reviews` (`review_id`, `review_movie_id`, `review_user_id`, `review_rating`, `review_content`)
+VALUES
+	(6,1,39,4,'This is one of my favorite movies of all time!'),
+	(7,1,39,1,'On second thought, this was awful.');
+
+/*!40000 ALTER TABLE `reviews` ENABLE KEYS */;
+UNLOCK TABLES;
 
 
 # Dump of table users
@@ -90,7 +100,8 @@ LOCK TABLES `users` WRITE;
 
 INSERT INTO `users` (`user_id`, `user_name`, `user_full_name`, `user_email`, `user_password`, `user_role`)
 VALUES
-	(38,'admin','Admin 1','admin@admin.com','admin',1);
+	(38,'admin','Admin 1','admin@admin.com','admin',1),
+	(39,'test','Test','test@test.com','test',2);
 
 /*!40000 ALTER TABLE `users` ENABLE KEYS */;
 UNLOCK TABLES;

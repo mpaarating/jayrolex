@@ -8,7 +8,8 @@ require_once ('includes/database.php');
 $user_id = $session_id;
 $movie_id = $_GET['movie_id'];
 $review_rating = $_GET['review_rating'];
-$review_content = $_GET['review_content'];
+$review_string = $_GET['review_content'];
+$review_content = mysqli_real_escape_string($conn, $review_string);
 
 //define statement
 $query_str = "INSERT INTO reviews VALUES (NULL, '$movie_id', '$user_id', '$review_rating', '$review_content')";

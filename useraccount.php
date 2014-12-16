@@ -121,11 +121,10 @@ if (!$result) {
 			<div class="col-xs-6">
 				<h2 class="text-center text-success">Your Reviews</h2>
 				<?php
-				if ($review_result){
 					while ($review_row = $review_result->fetch_assoc()) { ?>
 
 						<div class="panel panel-default">
-							<div class="panel-heading">
+							<div class="panel-heading movie-list">
 								<h3 class="panel-title">
 									<a href="moviedetails.php?id=<?= $review_row['movie_id'] ?>"><?= $review_row['movie_name'] ?></a>
 								</h3>
@@ -144,10 +143,7 @@ if (!$result) {
 							</div>
 						</div>
 					<?php
-					}
-				} else { ?>
-					<p>You have no reviews</p>
-				<?php } ?>
+					} ?>
 			</div>
 
 		</div>
